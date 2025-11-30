@@ -1,0 +1,82 @@
+{
+    "93CCD627": {
+        "primeiro_acesso": "2025-11-29T17:11:51.884434",
+        "ultimo_acesso": "2025-11-29T17:12:18.045434",
+        "vezes_usado": 3,
+        "acessos": [
+            {
+                "timestamp": "2025-11-29T17:11:51.884434",
+                "dispositivo": "SISTEMA_CENTRAL",
+                "resultado": "Permitido",
+                "localizacao": {
+                    "ip": "189.33.67.183",
+                    "cidade": "São Paulo",
+                    "regiao": "São Paulo",
+                    "pais": "Brazil",
+                    "lat": -23.5475,
+                    "lon": -46.6361,
+                    "isp": "Claro NXT Telecomunicacoes Ltda"
+                },
+                "google_maps": "https://www.google.com/maps?q=-23.5475,-46.6361"
+            },
+            {
+                "timestamp": "2025-11-29T17:12:12.510445",
+                "dispositivo": "SISTEMA_CENTRAL",
+                "resultado": "Permitido",
+                "localizacao": {
+                    "ip": "189.33.67.183",
+                    "cidade": "São Paulo",
+                    "regiao": "São Paulo",
+                    "pais": "Brazil",
+                    "lat": -23.5475,
+                    "lon": -46.6361,
+                    "isp": "Claro NXT Telecomunicacoes Ltda"
+                },
+                "google_maps": "https://www.google.com/maps?q=-23.5475,-46.6361"
+            },
+            {
+                "timestamp": "2025-11-29T17:12:18.045434",
+                "dispositivo": "SISTEMA_CENTRAL",
+                "resultado": "Permitido",
+                "localizacao": {
+                    "ip": "189.33.67.183",
+                    "cidade": "São Paulo",
+                    "regiao": "São Paulo",
+                    "pais": "Brazil",
+                    "lat": -23.5475,
+                    "lon": -46.6361,
+                    "isp": "Claro NXT Telecomunicacoes Ltda"
+                },
+                "google_maps": "https://www.google.com/maps?q=-23.5475,-46.6361"
+            }
+        ],
+        "dispositivos_utilizados": [
+            "SISTEMA_CENTRAL"
+        ]
+    },
+    "F34CDF27": {
+        "primeiro_acesso": "2025-11-29T17:12:06.271829",
+        "ultimo_acesso": "2025-11-29T17:12:06.271829",
+        "vezes_usado": 1,
+        "acessos": [
+            {
+                "timestamp": "2025-11-29T17:12:06.271829",
+                "dispositivo": "SISTEMA_CENTRAL",
+                "resultado": "Permitido",
+                "localizacao": {
+                    "ip": "189.33.67.183",
+                    "cidade": "São Paulo",
+                    "regiao": "São Paulo",
+                    "pais": "Brazil",
+                    "lat": -23.5475,
+                    "lon": -46.6361,
+                    "isp": "Claro NXT Telecomunicacoes Ltda"
+                },
+                "google_maps": "https://www.google.com/maps?q=-23.5475,-46.6361"
+            }
+        ],
+        "dispositivos_utilizados": [
+            "SISTEMA_CENTRAL"
+        ]
+    }
+}

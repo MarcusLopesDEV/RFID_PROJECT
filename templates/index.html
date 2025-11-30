@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Acesso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <!-- Alertas -->
+    <div id="alertContainer" class="alert-fixed"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-id-card-alt me-2"></i>
+                Controle de Acesso
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="nav-link">
+                    <i class="fas fa-circle me-1" id="statusIcon"></i>
+                    <span id="statusText">Conectando...</span>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Estatísticas -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>
+                            <i class="fas fa-chart-bar me-2"></i>Estatísticas do Sistema
+                            <span class="pulse ms-2">●</span>
+                        </span>
+                        <div>
+                            <button class="btn btn-sm btn-light me-2" onclick="carregarDados()">
+                                <i class="fas fa-sync-alt"></i> Atualizar
+                            </button>
+                            <button class="btn btn-sm btn-warning" onclick="reiniciarSerial()">
+                                <i class="fas fa-redo"></i> Reiniciar Serial
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <div class="stats-card">
+                                    <i class="fas fa-id-card fa-2x text-primary"></i>
+                                    <div class="stats-number" id="totalCartoes">0</div>
+                                    <div class="stats-label">Cartões Cadastrados</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stats-card">
+                                    <i class="fas fa-check-circle fa-2x text-success"></i>
+                                    <div class="stats-number" id="totalAcessos">0</div>
+                                    <div class="stats-label">Acessos Permitidos</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stats-card">
+                                    <i class="fas fa-times-circle fa-2x text-danger"></i>
+                                    <div class="stats-number" id="totalNegados">0</div>
+                                    <div class="stats-label">Acessos Negados</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stats-card">
+                                    <i class="fas fa-redo fa-2x text-warning"></i>
+                                    <div class="stats-number" id="totalRepetidos">0</div>
+                                    <div class="stats-label">Cartões Repetidos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Últimos Acessos -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-clock me-2"></i> Últimos Acessos
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>UID</th>
+                                        <th>Data/Hora</th>
+                                        <th>Status</th>
+                                        <th>Usos</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelaAcessos">
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4">
+                                            <div class="loading">
+                                                <i class="fas fa-spinner fa-spin me-2"></i>Carregando...
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cartões Cadastrados -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-list me-2"></i> Cartões Cadastrados
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>UID</th>
+                                        <th>Primeiro Uso</th>
+                                        <th>Último Uso</th>
+                                        <th>Vezes</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelaCartoes">
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4">
+                                            <div class="loading">
+                                                <i class="fas fa-spinner fa-spin me-2"></i>Carregando...
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
