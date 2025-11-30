@@ -119,7 +119,3 @@ if __name__ == '__main__':
     # Instalar dependência: pip install requests pyserial
     
     monitorar_arduino()
-
-    pip install requests pyserial
-# ⚠️ AJUSTE O IP NO ARQUIVO dispositivo_remoto.py PARA O IP DO SEU SERVIDOR
-python dispositivo_remoto.py
